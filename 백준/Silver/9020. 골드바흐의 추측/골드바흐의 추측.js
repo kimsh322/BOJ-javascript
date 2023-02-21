@@ -11,15 +11,16 @@ for (let i = 3; i <= Math.max(...input); i += 2) {
   if (isPrime) prime.push(i);
 }
 let result = "";
+let final = "";
 for (let i = 1; i <= input[0]; i++) {
   for (let el of prime) {
     if (el > input[i] / 2) break;
     if (prime.includes(input[i] - el)) {
       let a = Math.min(el, input[i] - el);
       let b = Math.max(el, input[i] - el);
-      result = a + " " + b;
+      result = a + " " + b + "\n";
     }
   }
-  console.log(result);
-  result = "";
+  final += result;
 }
+console.log(final);
