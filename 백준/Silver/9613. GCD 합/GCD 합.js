@@ -3,6 +3,7 @@ const gcd = (a, b) => {
   if (a % b === 0) return b;
   return gcd(b, a % b);
 };
+let result =''
 for (let i = 0; i < num; i++) {
   let sum = 0;
   let [a, ...arr] = input[i].split(" ").map(Number);
@@ -11,5 +12,6 @@ for (let i = 0; i < num; i++) {
       sum += gcd(arr[j], arr[k]);
     }
   }
-  console.log(sum);
+   result += sum + '\n'
 }
+console.log(result);
