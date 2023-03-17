@@ -1,14 +1,16 @@
 const [a, ...input] = require("fs").readFileSync('/dev/stdin').toString().trim().split("\n");
 const func = (command, leng, arr) => {
   let stack = [];
+  let left = 0;
+  let right = leng;
   for (let j = 0; j < command.length; j++) {
     if (command[j] === "D" && stack.length > 0) {
-      if (arr.length > 0) arr.pop();
+      if (left < right) right--;
       else {
         return "error";
       }
     } else if (command[j] === "D") {
-      if (arr.length > 0) arr.shift();
+      if (left < right) left++;
       else {
         return "error";
       }
@@ -19,6 +21,7 @@ const func = (command, leng, arr) => {
       else stack.push("R");
     }
   }
+  arr = arr.slice(left, right);
   if (stack.length > 0) arr.reverse();
   return JSON.stringify(arr);
 };
