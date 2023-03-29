@@ -9,6 +9,9 @@ for (let i = 0; i <= input[1] - p.length; i++) {
       break;
     }
   }
-  if (bool) num++;
+  if (bool){
+      num++;
+      i++
+  } 
 }
 console.log(num);
