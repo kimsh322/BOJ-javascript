@@ -12,7 +12,7 @@ const func = (num,x,y) => {
     return;
   }
   if(num>=l) return;
-  for(let i=num; i<c-l+num+1; i++){
+  for(let i=num; i<c; i++){
     if(visited[i]) continue;
     for(let j=0; j<=i ;j++) visited[j] = true;
     vowel.includes(arr[i]) ? x++ : y++ ;
@@ -24,17 +24,6 @@ const func = (num,x,y) => {
   }
 }
 
-for(let i=0; i<c-3; i++){
-  if(visited[i]) continue;
-  for(let j=0; j<=i ;j++) visited[j] = true;
-  let x=0;
-  let y=0;
-  vowel.includes(arr[i]) ? x++ : y++ ;
-  newArr.push(arr[i]);
-  func(1,x,y);
-  newArr.pop();
-  vowel.includes(arr[i]) ? x-- : y-- ;
-  for(let j=0; j<=i ;j++) visited[j] = false;
-}
+func(0,0,0)
 
 console.log(result);
