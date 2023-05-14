@@ -25,8 +25,8 @@ func(0);
 const func2 = (arr) => {
     let sum=0;
     for(let el of arr){
-        for(let i=0; i<n; i++){
-            if(arr.includes(i)) sum += table[el][i];
+        for(let el2 of arr){
+            sum += table[el][el2];
         }
     }
     return sum;
