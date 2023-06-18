@@ -3,32 +3,31 @@ n = +n;
 const adjArr = Array(n + 1)
   .fill(0)
   .map(() => []);
-const isLeaf = Array(n + 1).fill(true);
+
 for (let i = 0; i < n - 1; i++) {
   const [parent, child, weight] = input[i].split(" ").map(Number);
-  isLeaf[parent] = false;
   adjArr[parent].push([child, weight]);
   adjArr[child].push([parent, weight]);
 }
 
-let max = 0;
-const visited = Array(n + 1).fill(false);
+let endNode = 0;
+let endDist = 0;
+let visited = Array(n + 1).fill(false);
 const dfs = (node, dist) => {
+  if (visited[node]) return;
+  visited[node] = true;
   for (let el of adjArr[node]) {
     if (!visited[el[0]]) {
-      visited[el[0]] = true;
-      dfs(el[0], dist + el[1]);
-      visited[el[0]] = false;
+      if (el[1] + dist > endDist) {
+        endNode = el[0];
+        endDist = el[1] + dist;
+      }
+      dfs(el[0], el[1] + dist);
     }
   }
-  max = Math.max(max, dist);
 };
 
-for (let i = 1; i <= n; i++) {
-  if (isLeaf[i]) {
-    visited[i] = true;
-    dfs(i, 0);
-    visited[i] = false;
-  }
-}
-console.log(max);
+dfs(1, 0);
+visited = visited.map((el) => false);
+dfs(endNode, 0);
+console.log(endDist);
