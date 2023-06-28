@@ -1,14 +1,14 @@
 const n = +require("fs").readFileSync('/dev/stdin').toString().trim();
-const prime = [2];
-for (let i = 3; i <= n; i += 2) {
-  let bool = true;
-  for (let j = 3; j <= Math.sqrt(i); j++) {
-    if (i % j === 0) {
-      bool = false;
-      break;
-    }
+const prime = [];
+const check = Array(n + 1).fill(true);
+for (let i = 2; i <= Math.sqrt(n); i++) {
+  if (!check[i]) continue;
+  for (let j = i * i; j <= n; j += i) {
+    check[j] = false;
   }
-  if (bool) prime.push(i);
+}
+for (let i = 2; i <= n; i++) {
+  if (check[i]) prime.push(i);
 }
 
 let left = 0,
