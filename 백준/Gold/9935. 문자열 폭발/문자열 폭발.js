@@ -4,8 +4,12 @@ let boomLeng = boom.length;
 let stack = [];
 for (let i = 0; i < leng; i++) {
   stack.push(str[i]);
-  if (stack.slice(-boomLeng).join("") === boom) {
-    for (let j = 0; j < boomLeng; j++) stack.pop();
+  if (stack[stack.length - 1] === boom[boomLeng - 1]) {
+    let bool = true;
+    for (let j = 1; j < boomLeng; j++) {
+      if (stack[stack.length - j - 1] !== boom[boomLeng - j - 1]) bool = false;
+    }
+    if (bool) for (let j = 0; j < boomLeng; j++) stack.pop();
   }
 }
 if (stack.length === 0) console.log("FRULA");
