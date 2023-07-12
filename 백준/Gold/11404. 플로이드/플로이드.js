@@ -20,14 +20,11 @@ for (let i = 0; i < n; i++) {
   }
 }
 
+let result = "";
 for (let i = 0; i < n; i++) {
   for (let j = 0; j < n; j++) {
     if (adj[i][j] === Number.MAX_SAFE_INTEGER) adj[i][j] = 0;
   }
-}
-
-let result = "";
-for (let i = 0; i < n; i++) {
   result += adj[i].join(" ") + "\n";
 }
 console.log(result);
