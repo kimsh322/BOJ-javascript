@@ -18,24 +18,22 @@ for (let aa = 0; aa < tc; aa++) {
   const distance = Array(n + 1).fill(Number.MAX_SAFE_INTEGER);
   distance[1] = 0;
   let update = false;
+  let cycle = false;
   for (let i = 1; i <= n; i++) {
     update = false;
     for (let [cur, next, dist] of edge) {
       if (distance[next] > distance[cur] + dist) {
+        if (i === n) {
+          cycle = true;
+          break;
+        }
         distance[next] = distance[cur] + dist;
         update = true;
       }
     }
     if (!update) break;
   }
-  let cycle = false;
-  if (update) {
-    for (let [cur, next, dist] of edge) {
-      if (distance[next] > distance[cur] + dist) {
-        cycle = true;
-      }
-    }
-  }
+
   result += cycle ? "YES\n" : "NO\n";
 }
 
