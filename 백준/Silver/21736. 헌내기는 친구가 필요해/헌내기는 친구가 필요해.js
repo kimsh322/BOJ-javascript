@@ -25,8 +25,9 @@ const dy = [0, 0, 1, -1];
 
 let count = 0;
 const queue = [start];
-while (queue.length) {
-  const [y, x] = queue.shift();
+let index = 0;
+while (index < queue.length) {
+  const [y, x] = queue[index];
   for (let i = 0; i < 4; i++) {
     let curY = y + dy[i];
     let curX = x + dx[i];
@@ -38,5 +39,6 @@ while (queue.length) {
       queue.push([curY, curX]);
     }
   }
+  index++;
 }
 console.log(count ? count : "TT");
