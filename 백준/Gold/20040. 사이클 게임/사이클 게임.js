@@ -1,9 +1,5 @@
 const [a, ...input] = require("fs").readFileSync('/dev/stdin').toString().trim().split("\n");
 const [n, m] = a.split(" ").map(Number);
-const arr = [];
-for (let i = 0; i < m; i++) {
-  arr.push(input[i].split(" ").map(Number));
-}
 
 const parent = [];
 for (let i = 0; i < n; i++) parent.push(i);
@@ -24,7 +20,7 @@ const compareRoot = (a, b) => {
 };
 let result = 0;
 for (let i = 0; i < m; i++) {
-  let [a, b] = arr[i];
+  let [a, b] = input[i].split(" ").map(Number);
   if (compareRoot(a, b)) {
     result = i + 1;
     break;
