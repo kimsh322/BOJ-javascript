@@ -6,8 +6,8 @@ class Heap {
     this.values = [];
   }
 
-  enqueue(value, weight) {
-    this.values.push([value, weight]);
+  enqueue(value) {
+    this.values.push(value);
     this.bubbleUp();
   }
 
@@ -17,7 +17,7 @@ class Heap {
     while (curIdx > 0) {
       let parentIdx = Math.floor((curIdx - 1) / 2);
       const parent = this.values[parentIdx];
-      if (cur[0] <= parent[0]) break;
+      if (cur <= parent) break;
       this.values[parentIdx] = cur;
       this.values[curIdx] = parent;
       curIdx = parentIdx;
@@ -46,12 +46,12 @@ class Heap {
       let swap = null;
       if (leftChildIdx < leng) {
         leftChild = this.values[leftChildIdx];
-        if (leftChild[0] > cur[0]) swap = leftChildIdx;
+        if (leftChild > cur) swap = leftChildIdx;
       }
       if (rightChildIdx < leng) {
         rightChild = this.values[rightChildIdx];
-        if (swap === null && rightChild[0] > cur[0]) swap = rightChildIdx;
-        if (swap !== null && rightChild[0] > leftChild[0]) swap = rightChildIdx;
+        if (swap === null && rightChild > cur) swap = rightChildIdx;
+        if (swap !== null && rightChild > leftChild) swap = rightChildIdx;
       }
       if (swap === null) break;
       this.values[curIdx] = this.values[swap];
@@ -76,12 +76,12 @@ for (let j = 0; j < backpack.length; j++) {
   while (i < jewelry.length) {
     let [weight, value] = jewelry[i];
     if (weight <= curWeight) {
-      heap.enqueue(value, weight);
+      heap.enqueue(value);
       i++;
     } else break;
   }
   if (heap.values.length === 0) continue;
   let curJewelry = heap.dequeue();
-  result += curJewelry[0];
+  result += curJewelry;
 }
 console.log(result);
