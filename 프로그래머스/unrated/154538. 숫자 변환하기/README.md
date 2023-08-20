@@ -1,10 +1,10 @@
 # [unrated] 숫자 변환하기 - 154538 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/154538) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/154538?language=javascript) 
 
 ### 성능 요약
 
-메모리: 41.4 MB, 시간: 7.14 ms
+메모리: 41.8 MB, 시간: 6.86 ms
 
 ### 구분
 
