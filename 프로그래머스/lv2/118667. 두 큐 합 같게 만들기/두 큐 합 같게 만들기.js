@@ -9,20 +9,23 @@ function solution(queue1, queue2) {
     
     let count = 0;
     let end = false;
-    let idx = 0;
-    while(queue2.length) {
+    let idx1 = 0;
+    let idx2 = 0;
+    let maxIdx = queue2.length-1;
+    while(idx2 <= maxIdx) {
         if(sum1 === target) {
             end = true;
             break;
         }
         if(sum1 > target) {
-            sum1 -= queue1[idx];
-            idx++;
+            sum1 -= queue1[idx1];
+            idx1++;
             count++;
         } else {
-            let cur = queue2.shift();
+            let cur = queue2[idx2];
             queue1.push(cur);
             sum1 += cur;
+            idx2++;
             count++;
         }
     }
