@@ -13,20 +13,9 @@ function solution(orders, course) {
         return count ;
     }
     
-    // 사용하는 알파벳 구하기
-    const checkAllAlpha = new Set();
-    for(let order of orders) {
-        for(let i=0; i<order.length; i++) {
-            checkAllAlpha.add(order[i]);
-        }
-    }
-    const leng = checkAllAlpha.size
-    const arr = Array.from(checkAllAlpha);
-    arr.sort();
-    
     let allCourse = new Set();
     const tempArr = [];
-    const visited = Array(leng).fill(false);
+    const visited = Array(26).fill(false);
     
     // 가능한 모든 course 구하기
     const getAllCourse = (a,index,order) => {
